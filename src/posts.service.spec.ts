@@ -23,12 +23,9 @@ describe('PostsService', () => {
   });
 
   it('should find a post', () => {
-    const post = postsService.find('1');
+    const newPost = postsService.create(post);
+    const foundedPost = postsService.find(newPost.id);
 
-    expect(post).toMatchObject({
-      id: '1',
-      text: 'Some pre-existing post',
-      date: expect.any(String),
-    });
+    expect(foundedPost).toEqual(newPost);
   });
 });
